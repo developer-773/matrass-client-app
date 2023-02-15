@@ -1,0 +1,60 @@
+/* MIXINS */
+
+@mixin site-button($width, $color, $bgcolor) {
+  display: inline-block;
+  width: $width;
+  padding: 15px 25px;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: -0.115385px;
+  color: $color;
+  background-color: $bgcolor;
+}
+
+@mixin txt-formats($Ffamily, $Fsize, $Fheight, $Lheight, $color) {
+  font-family: $Ffamily;
+  font-size: $Fsize;
+  font-weight: $Fheight;
+  line-height: $Lheight;
+  color: $color;
+}
+
+
+@mixin size($size) {
+  @if $size == phone {
+      @media only screen and (min-width: 320px) { @content; }
+  } @else if $size == tablet{
+      @media only screen and (min-width: 768px) { @content; }
+  } @else if $size == desktop {
+      @media only screen and (min-width: 1200px) { @content; }
+  } 
+}
+
+
+
+@mixin  bgRetina{
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    @content;
+  }
+}
+
+@mixin text-end{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
+
+
+

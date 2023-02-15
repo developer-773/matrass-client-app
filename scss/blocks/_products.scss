@@ -1,0 +1,485 @@
+@include size(phone) {
+	.products_title {
+		margin-bottom: 54px;
+		padding: 0 20px;
+		font-family: "Josefin Sans";
+		font-weight: 700;
+		font-size: 28px;
+		line-height: 28px;
+		color: #01384d;
+		text-align: center;
+	}
+
+	.products_left img {
+		margin-top: 9rem;
+		width: 100%;
+		max-width: 440px;
+		border-radius: 8px
+	}
+
+	/* Product caregories list start */
+
+	.products_linsk-list {
+		display: flex;
+		width: 100%;
+		margin-bottom: 50px;
+		padding: 0 20px 21px 20px;
+		overflow-x: scroll;
+	}
+
+	.products_linsk-list .container {
+		display: none;
+	}
+
+	.products_links-item {
+		min-width: 71px;
+		margin-right: 40px;
+	}
+
+	.products_links-link {
+		font-family: "Josefin Sans";
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 16px;
+		text-align: center;
+		color: #01374d8c;
+		border-bottom: 4px solid #ffffff;
+	}
+
+	.products_links-link--active {
+		font-family: "Raleway";
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: #01384d;
+		padding-bottom: 17px;
+		border-bottom: 4px solid #01384d;
+	}
+
+	/* Product caregories list end */
+
+	/* Products list start  */
+
+	.products_list {
+		position: relative;
+	}
+
+	.products_item {
+		margin-bottom: 30px;
+		padding: 20px;
+		background: #f6fbff;
+	}
+
+	.products_new-btn {
+		margin-bottom: 87px;
+		padding: 10px 20px;
+		font-family: "Josefin Sans";
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 14px;
+		text-align: center;
+		text-transform: uppercase;
+		color: #ffffff;
+		background: #ff6b6b;
+		border-radius: 5px;
+		border: none;
+	}
+
+	.products__zoom-btn {
+		position: absolute;
+		top: 51rem;
+		right: 0;
+		z-index: 3;
+		width: 45px;
+		height: 45px;
+		border: none;
+		background-color: transparent;
+		cursor: pointer;
+		background-image: url("../../icons/zoom_in.svg");
+		background-repeat: no-repeat;
+		background-size: 31px;
+		background-position: center center;
+	}
+
+	.products__main-box {
+		position: relative;
+	}
+
+	.overlay {
+		position: fixed;
+		width: 100%;
+		height: 100%;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: rgba(0, 0, 0, 0.5);
+		z-index: 2;
+		cursor: pointer;
+		transition: all 0.1s linear;
+	}
+
+	.products__zoom-selected-box {
+		position: fixed;
+		left: 50%;
+		top: 50%;
+		z-index: 3;
+		width: 440px;
+		transform: translate(-50%, -50%);
+		padding: 20px;
+		background-color: #fff;
+		& .products__zoom-close {
+			display: flex;
+			width: 17px;
+			height: 17px;
+			margin-left: auto;
+			margin-bottom: 77px;
+			background-image: url("../../icons/close-icon.svg");
+			background-repeat: no-repeat;
+			background-size: contain;
+			border: none;
+			background-color: transparent;
+			cursor: pointer;
+		}
+
+		.products__zoom-selected {
+			margin: auto;
+		}
+	}
+
+	.hide {
+		display: none;
+	}
+
+	.products__zoom-list {
+		display: flex;
+		justify-content: center;
+		margin-top: 37px;
+		margin-bottom: 17px;
+	}
+
+	.products__zoom-item {
+		margin-right: 22px;
+	}
+
+	.mod {
+		& img {
+			border: 3px solid #09010c;
+		}
+	}
+
+	.products_info-list {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 4rem;
+	}
+
+	.products_right-title {
+		position: absolute;
+		top: 6rem;
+		margin-bottom: 40px;
+		font-family: "Josefin Sans";
+		font-weight: 700;
+		font-size: 22px;
+		line-height: 22px;
+		color: #01384d;
+	}
+
+	.products_info-title {
+		font-family: "Josefin Sans";
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 14px;
+		color: #01384d;
+		opacity: 0.6;
+	}
+
+	.products_info-info-value,
+	.products_right-price-value {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 30px;
+		line-height: 35px;
+		color: #01384d;
+		& .products_info-info {
+			font-size: 16px;
+			line-height: 19px;
+		}
+	}
+
+	.products_right-price-value {
+		margin-top: 0;
+		margin-bottom: 30px;
+	}
+
+	.products_right-desc {
+		margin-bottom: 30px;
+		font-family: "Raleway";
+		font-weight: 300;
+		font-size: 16px;
+		line-height: 26px;
+		color: #01384d;
+		opacity: 0.6;
+	}
+
+	.products_right-price-title {
+		margin-bottom: 10px;
+		font-family: "Raleway";
+		font-weight: 400;
+		font-size: 16px;
+		line-height: 19px;
+		color: #01384d;
+		opacity: 0.6;
+	}
+
+	.products_right-price-text {
+		font-family: "Raleway";
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: #01384d;
+	}
+
+	.products_right-order {
+		display: inline-flex;
+		align-items: center;
+		padding: 13px 56px 13px 20px;
+		font-family: "Raleway";
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+		background: #ffffff;
+		border: 2px solid #01384d;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 0.4s;
+		&::after {
+			content: "";
+			width: 17px;
+			height: 17px;
+			margin-left: 15px;
+			background-image: url("../../icons/shopping_cart.svg");
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+
+	.products_right-order:hover {
+		background-color: #01374ddc;
+		color: #fff;
+	}
+
+	.discount_title {
+		font-family: "Josefin Sans";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 30px;
+		line-height: 30px;
+		color: #01384d;
+		text-align: center;
+	}
+
+	.products_info-info {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: #01384d;
+	}
+
+	.price_box {
+		display: flex;
+		align-items: end;
+		margin-bottom: 35px;
+	}
+
+	.old_price {
+		font-family: "Raleway";
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 21px;
+		text-decoration-line: line-through;
+		color: #ff5d5d;
+		opacity: 0.8;
+	}
+	
+	.old_price + strong {
+		margin-right: 20px;
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 10px;
+		line-height: 12px;
+		text-decoration-line: line-through;
+		color: #ff5d5d;
+		opacity: 0.8;
+	}
+	.new_price {
+		margin-bottom: 0;
+	}
+
+	.new_price + strong {
+		font-family: "Raleway";
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 19px;
+		color: #01384d;
+	}
+
+	.products__zoom-selected-box {
+		width: 100%;
+		max-width: 445px;
+	}
+
+	.products__zoom-selected {
+		width: 100%;
+		max-width: 445px;
+		height: 300px;
+	}
+
+	.products__zoom-img  {
+		width: 115px;
+		height: 100px;
+	}
+
+	/* Products list end  */
+}
+
+@include size(tablet) {
+	.products_title {
+		font-size: 50px;
+		line-height: 59px;
+	}
+
+	.products_linsk-list {
+		overflow-x: hidden;
+	}
+
+	.products_linsk-list .container {
+		display: block;
+	}
+
+	.products_item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.products__zoom-btn {
+		position: absolute;
+		top: 3rem;
+		left: 32rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 64px;
+		height: 64px;
+		border-radius: 50%;
+		background-color: #d9e1e7;
+	}
+
+	.products_left {
+		width: 100%;
+		max-width: 744px;
+		& img {
+			max-width: 750px;
+		}
+	}
+
+	.products_right {
+		width: 100%;
+		max-width: 800px;
+	}
+
+	.products_right-title {
+		position: static;
+		top: 0;
+		font-size: 40px;
+		line-height: 47px;
+	}
+
+	.discount_title {
+		font-size: 40px;
+		line-height: 40px;
+	}
+
+	.products_info-list {
+		justify-content: flex-start;
+	}
+
+	.products__zoom-selected-box {
+		width: 440px;
+		border-radius: 5px;
+	}
+
+	.products__zoom-selected {
+		width: 320px;
+	}
+
+	.products__zoom-img  {
+		width: 100px;
+	}
+}
+
+@include size(desktop) {
+
+	.products_item {
+		flex-direction: row;
+	}
+
+	.products_left img {
+		margin-top: 11rem;
+		width: 464px;
+		height: 300px;
+	}
+
+	.products__zoom-btn{
+		// position: static;
+		z-index: 0;
+	}
+
+	.products_right {
+		width: 936px;
+	}
+
+	.discount_title {
+		font-size: 50px;
+		line-height: 50px;
+	}
+
+	.products__zoom-selected-box {
+		width: 100%;
+		max-width: 670px;
+	}
+
+	.products__zoom-selected {
+		width: 100%;
+		max-width: 510px;
+		border-radius: 5px;
+		// width: 690px;
+		// height: 300px;
+	}
+
+	.products__zoom-img  {
+		width: 150px;
+		height: 100px;
+		border-radius: 5px;
+	}
+}
+
+.discount-text {
+	padding: 10px 30px;
+	font-family: "Josefin Sans";
+	font-weight: 600;
+	font-size: 14px;
+	line-height: 14px;
+	text-align: center;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: #ffffff;
+	background: #1fca25;
+	border-radius: 5px;
+}

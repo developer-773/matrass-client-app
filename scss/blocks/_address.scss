@@ -1,0 +1,194 @@
+@include size(phone) {
+	.address {
+		position: relative;
+		padding-bottom: 70px;
+	}
+
+	.address__title {
+		margin: 0 0 20px 0;
+		font-family: "Josefin Sans";
+		font-weight: 700;
+		font-size: 28px;
+		line-height: 28px;
+		color: #01384d;
+	}
+
+	.address__location {
+		margin-bottom: 10px;
+		font-family: "Josefin Sans";
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 18px;
+		color: #01384d;
+	}
+
+	.address__destination {
+		margin-bottom: 25px;
+		font-family: "Josefin Sans";
+		font-weight: 400;
+		font-size: 14px;
+		line-height: 20px;
+		color: #01384d;
+	}
+
+	.address__geolocation {
+		display: inline-block;
+		width: 100%;
+		max-width: 360px;
+		padding: 10px;
+		font-family: "Segoe UI";
+		font-size: 14px;
+		line-height: 16px;
+		color: #01384d;
+		text-align: center;
+		border: 2px solid #01384d;
+		border-radius: 5px;
+		cursor: pointer;
+		transition: 0.4s;
+		&::before {
+			display: inline-flex;
+			content: "";
+			width: 10px;
+			height: 10px;
+			margin-right: 12px;
+			background-image: url("../../icons/Location.svg");
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+	}
+
+	.address__geolocation:hover {
+		background-color: #01374dde;
+		color: #fff;
+	}
+
+	.address__box {
+		position: absolute;
+		top: 26rem;
+		z-index: 5;
+		text-align: center;
+	}
+
+	.addressSwiperInner .swiper-wrapper .swiper-slide {
+		img {
+			width: 100%;
+			max-width: 427px;
+			height: 200px;
+			margin: 0 auto;
+			margin-bottom: 170px;
+		}
+	}
+
+	.addressSwiper .address__pagination {
+		top: 20rem;
+		right: 0;
+		z-index: 1;
+		margin: 0 auto;
+		width: 100%;
+		max-width: 427px;
+		height: 7px;
+		background: #fff;
+		border: 1px solid #01384d;
+		& .swiper-pagination-progressbar-fill {
+			background: #01384d;
+		}
+	}
+}
+
+@include size(tablet) {
+	.address__title {
+		font-family: "Raleway";
+		font-weight: 700;
+		font-size: 50px;
+		line-height: 59px;
+	}
+
+	.address__location {
+		font-family: "Raleway";
+		font-weight: 600;
+		font-size: 30px;
+		line-height: 35px;
+	}
+
+	.address__destination {
+		font-family: "Raleway";
+		font-size: 18px;
+		line-height: 28px;
+	}
+
+	.address__geolocation {
+		font-family: "Raleway";
+		font-weight: 600;
+		font-size: 18px;
+		line-height: 21px;
+		cursor: pointer;
+	}
+
+	.address__box {
+		top: 28rem;
+		z-index: 5;
+	}
+
+	.addressSwiperInner .swiper-wrapper .swiper-slide img {
+		max-width: 527px;
+		margin-bottom: 190px;
+	}
+
+	.addressSwiper .address__pagination {
+		max-width: 527px;
+	}
+}
+
+@include size(desktop) {
+	.address__swiper-left {
+		position: absolute;
+		z-index: 11;
+		width: 482px;
+	}
+
+	.address__box {
+		top: 7rem;
+		z-index: 11;
+	}
+
+	.address__swiper-left, .address__box {
+		background-color: #fff;
+		
+	}
+
+	.address__title {
+		margin-bottom: 50px;
+		text-align: left;
+	}
+
+	.address__destination {
+		margin-bottom: 61px;
+		text-align: left;
+	}
+
+	.address__geolocation {
+		display: block;
+		margin-right: auto;
+	}
+
+
+	.addressSwiperInner .swiper-wrapper .swiper-slide-active {
+		width: 1900px !important;
+
+		& img {
+			display: block;
+			width: 521px !important;
+			height: 323px;
+			margin-right: auto;
+			padding-bottom: 0;
+		}
+	}
+
+	.addressSwiper .address__pagination {
+		top: 32rem;
+		left: auto;
+		right: 0;
+		margin-left: auto;
+		max-width: 511px;
+	}
+}

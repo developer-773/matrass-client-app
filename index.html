@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Matraslar</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+	<link rel="stylesheet" href="./css/main.css" />
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
+
+</head>
+
+<body>
+	<div class="overlay hide"></div>
+	<header class="header" id="top">
+		<div class="container">
+			<div class="header__top">
+				<div id="navbar" class="header__navbar">
+					<nav class="sitenav">
+						<ul class="sitenav__list lst">
+							<li class="sitenav__item item">
+								<a class="sitenav__link" href="#catalog">Katalog</a>
+							</li>
+
+							<li class="sitenav__item">
+								<a class="sitenav__link" href="#discountt">Aksiya</a>
+							</li>
+							<li class="sitenav__item">
+								<a class="sitenav__link" href="#about">Biz haqimizda</a>
+							</li>
+							<li class="sitenav__item">
+								<a class="sitenav__link" href="#addres">Manzilimiz</a>
+							</li>
+							<li class="sitenav__item">
+								<a class="sitenav__link" href="#call">Aloqa</a>
+							</li>
+							<li class="sitenav__item">
+								<button class="header__btn">Buyurtma berish</button>
+							</li>
+							<li>
+								<a class="header__tel" href="tel:+998901234567">+998 90 123 45 67</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="header__order-modal hide">
+					<button class="header__order-modal-close-icon form-close"></button>
+					<h3 class="header__order-modal-title">Buyurtma qilish</h3>
+					<form class="header__order-form">
+						<input id="userName" class="header__order-input" type="text" name="user_name"
+							aria-label="Enter your name" placeholder="Ismingizni yozing" required minlength="3" />
+						<span class="header__order-num-box">
+							<label for="num" class="header__order-label-num"> +998 </label>
+							<input type="number" id="userNumber" class="header__order-input" name="user_phone"
+								placeholder="Raqamingizni yozing" required min="9" />
+						</span>
+						<label class="header__order-label" for="category">
+							Mahsulotlarni toifasini tanlang
+							<select name="user_category" id="userCategory" required>
+							</select>
+						</label>
+						<label class="header__order-label" for="count">
+							Miqdorni tanlang
+							<span class="header__order-count-box">
+								<button class="header__order-count-decrement" type="button" disabled>-</button>
+								<span id="userProductCount">1</span>
+								<button class="header__order-count-increment" type="button">+</button>
+							</span>
+						</label>
+						<button id="header__order-create-btn" type="submit">
+							Yuborish
+						</button>
+					</form>
+				</div>
+				<div class="header__order-success header__order-modal hide">
+					<img class="header__order-success-modal-close-icon" src="./icons/close-icon.svg" alt="" />
+					<h2 class="header__order-success-title">
+						Arizangiz muvaffaqiyatli yuborildi
+					</h2>
+					<img class="header__order-success-img" src="./icons/successfully.svg"
+						alt="Order created successfully" />
+					<p class="header__order-success-desc">
+						Tez orada operatorlarimiz siz bilan bog’lanishadi
+					</p>
+					<button class="header__order-success-btn">OK</button>
+				</div>
+			</div>
+			<div class="header__bottom">
+				<a class="logo" href="./index.html">
+					<img class="logo__img" src="./icons/logo.svg" width="109" height="25" alt="Matraslar's logo" />
+				</a>
+				<div class="header__bottom-right">
+					<a class="header__tel" href="tel:+998901234567">+998 90 123 45 67</a>
+					<button class="header__btn header__btn--active">Buyurtma berish</button>
+					<button class="header__hamburger" type="button"></button>
+					<img class="header__hamburger-close" src="./icons/close-icon.svg" width="22" height="23"
+						alt="Header navbar hamburger close button" />
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<main class="site-main">
+
+		<section class="hero">
+			<div class="container">
+				<div class="swiper mySwiper">
+					<div class="swiper-wrapper heroCarouselWrapper">
+						<!-- Carousel here from backend -->
+					</div>
+					<div class="hero__pagination"></div>
+				</div>
+			</div>
+		</section>
+
+		</section>
+		<section class="stats">
+			<div class="container">
+				<ul class="stats_list">
+					<li class="stats_item">
+						<strong id="count" class="stats_strong countup"></strong>
+						<span class="stats_title">Yillik tajriba</span>
+					</li>
+					<li class="stats_item">
+						<strong id="count" class="stats_strong customers"></strong>
+						<span class="stats_title">mamnun mijozlar</span>
+					</li>
+					<li class="stats_item">
+						<strong id="count" class="stats_strong year"></strong>
+						<span class="stats_title">yillik kafolat</span>
+					</li>
+					<li class="stats_item">
+						<strong id="count" class="stats_strong day"></strong>
+						<span class="stats_title">kunda yetkazish</span>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="our-products products" id="bottom">
+			<div class="container">
+				<h2 class="products_title">Bizning mahsulotlar</h2>
+				<ul class="products_linsk-list" id="catalog">
+
+					<!-- Products categories list here from backend -->
+				</ul>
+				<div class="products__main-box">
+					<div class="overlay hide"></div>
+					<!-- Products list here from backend -->
+				</div>
+		</section>
+		<section class="discount">
+			<div class="container">
+				<h2 class="discount_title hide">Aksiyadagi mahsulotlar</h2>
+				<ul class="products_linsk-list discount-list" id="discountt">
+					<!-- Discount products here from backend -->
+				</ul>
+				<div class="discount_main-box">
+					<!-- Discount products here from backend -->
+				</div>
+			</div>
+		</section>
+		<section class="technology tech">
+			<div class="container">
+				<h2 class="tech_title">Ishlab chiqarish texnologiyalari</h2>
+				<div class="swiper techSwiper">
+					<!-- Swiper here from backend -->
+					<div class="swiper-wrapper techWrapper"></div>
+					<div class="tech__pagination"></div>
+				</div>
+			</div>
+		</section>
+		<section class="dream-cloud dream">
+			<div class="container">
+				<div class="dream__top">
+					<div class="dream__bio-top">
+						<h2 class="dream__title">Dream Cloud kompaniyasi haqida</h2>
+						<p class="dream__description">
+							DreamCloud-da biz hech qachon uyqu bilan murosaga kelmasligingizga ishonamiz
+							Biz DreamCloud Sleep matrasini har bir uxlayotgan odamga kamroq pul evaziga hashamatli
+							uyqudan zavq olish imkoniyatini berish uchun ixtiro qildik.
+						</p>
+						<ul class="dream__list">
+							<li class="dream__item">Yuqori qulaylik</li>
+							<li class="dream__item">Premium materiallar</li>
+							<li class="dream__item">Hayotiy qiymat</li>
+						</ul>
+					</div>
+					<div class="dream__video video">
+						<a class="video__link" href="https://youtu.be/IR4edA1QH38">
+							<picture>
+								<source class="source" srcset="
+									https://i.ytimg.com/vi_webp/IR4edA1QH38/maxresdefault.webp
+									" type="image/webp" />
+								<img class="video__media" src="https://i.ytimg.com/vi/IR4edA1QH38/maxresdefault.jpg"
+									alt="Dream matress" />
+							</picture>
+						</a>
+						<button class="video__button" aria-label="Play video">
+							<svg width="50" height="50" viewBox="0 0 50 50" fill="none"
+								xmlns="http://www.w3.org/2000/svg">
+								<circle cx="25" cy="25" r="25" fill="#01384D" />
+								<path class="video__button-shape"
+									d="M31.0001 23.1581C32.3335 23.9279 33.0001 24.3128 33.0001 24.8902C33.0001 25.4675 32.3335 25.8524 31.0001 26.6222L22.0001 31.8184C20.6668 32.5882 20.0001 32.9731 19.5001 32.6844C19.0001 32.3958 19.0001 31.626 19.0001 30.0864V19.694C19.0001 18.1544 19.0001 17.3846 19.5001 17.096C20.0001 16.8073 20.6668 17.1922 22.0001 17.962L31.0001 23.1581Z"
+									fill="white" />
+							</svg>
+						</button>
+					</div>
+				</div>
+				<div class="dream__bottom">
+					<img class="dream__img" src="./images/dream-hotel.jpg" alt="Dream matrass" />
+					<div class="dream__bio-bottom">
+						<p class="dream__description">
+							DreamCloud kompaniyasi brendlar uyi bo'lgan Resident tarkibiga kiradi.
+							Kundalik uy mahsulotlari haqida gap ketganda, mijozlar yaxshiroq tanlovga ega.
+						</p>
+						<ul class="dream__list">
+							<li class="dream__item">Sanoatning eng yaxshi kafolati</li>
+							<li class="dream__item">Bo'sh vaqtingizda</li>
+							<li class="dream__item">Sizga mos keladigan moliyalashtirish</li>
+						</ul>
+						<p class="dream__desc">
+							DreamCloud 2018 yilda premium gibrid sifatida ishga tushirilgan.
+							to'g'ridan-to'g'ri iste'molchi uchun arzon narxda mo'ljallangan matras. Uning
+							hozirda u AQShda eng ko'p mukofotlangan hashamatli gibrid hisoblanadi. Unda bor
+							xotira ko'pik va alohida o'ralgan buloqlar orzu aralashmasi.
+							Har bir matras kaşmir bilan qoplangan va nihoyatda qulay. Rohatlaning
+							Belgilanmagan hunarmandchilik.
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="choose-us choose" id="about">
+			<div class="container">
+				<h2 class="choose__title">Nega bizni tanlashadi</h2>
+				<ul class="choose__list">
+					<li class="choose__item">
+						<img class="choose__img" src="./images/guarantee.jpg" alt="Kafolat" />
+						<div class="choose__content">
+							<h3 class="choose__subtitle">Kafolat</h3>
+							<p class="choose__desc">
+								Biz matraslarimiz uchun 8 yilgacha kafolat beramiz. Agar
+								matras kamida 25 mm qisqartirilsa.
+							</p>
+						</div>
+					</li>
+					<li class="choose__item">
+						<img class="choose__img" src="./images/support.jpg" alt="o'llab-quvvatlash" />
+						<div class="choose__content">
+							<h3 class="choose__subtitle">Qo'llab-quvvatlash</h3>
+							<p class="choose__desc">
+								Bizning qo'llab-quvvatlash xizmati sizga har qanday savolda
+								yordam beradi va menejerlarning
+							</p>
+							<a class="choose__tel" href="tel:+998971442442">+998 97 144-24-42</a>
+						</div>
+					</li>
+					<li class="choose__item">
+						<img class="choose__img" src="./images/shipping.jpg" alt="Yetkazib berish" />
+						<div class="choose__content">
+							<h3 class="choose__subtitle">Yetkazib berish</h3>
+							<p class="choose__desc">
+								Biz matraslarimiz uchun 8 yilgacha kafolat beramiz. Agar
+								matras kamida 25 mm qisqartirilsa.
+							</p>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</section>
+		<section class="our-address address" id="addres">
+			<div class="container">
+				<div class="swiper addressSwiper">
+					<div class="swiper-wrapper addressWrapper">
+						<!-- Swiper here from backend -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<section class="interesting" id="call">
+			<div class="container">
+				<div class="interesting__success hide">
+					<h3 class="interesting__title">Arizangiz muvaffaqiyatli qabul qilindi ✅</h3>
+					<p class="interesting__desc">Siz bilan tez orada bog’lanamiz 😊</p>
+				</div>
+				<div class="interesting__main-wrap">
+
+					<div class="interesting__wrapper">
+						<div class="interesting__left">
+							<h3 class="interesting__title">Sizni qiziqtirdimi?</h3>
+							<p class="interesting__desc">Raqamingizni qoldiring, biz sizga yana qo'ng'iroq qilamiz</p>
+						</div>
+						<div class="interesting__right">
+							<form class="interesting__form">
+								<label class="interesting__label" for="interesting">
+									<span class="interesting__s">+998
+									</span>
+									<input class="interesting__input" name="user__tel" aria-label="user_name"
+										type="number" placeholder="Raqamingizni yozing" id="interesting" required>
+								</label>
+								<button class="interesting__button">Yuborish</button>
+							</form>
+							<span class="interesting__error"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- <section>
+			<div class="container">
+				<a data-fancybox="gallery" href="https://lipsum.app/id/46/1600x1200">
+					<img class="rounded" src="https://lipsum.app/id/46/200x150" />
+				  </a>
+				  <a data-fancybox="gallery" href="https://lipsum.app/id/47/1600x1200">
+					<img class="rounded" src="https://lipsum.app/id/47/200x150" />
+				  </a>
+				  <a data-fancybox="gallery" href="https://lipsum.app/id/51/1600x1200">
+					<img class="rounded" src="https://lipsum.app/id/51/200x150" />
+				  </a>
+			</div>
+		</section> -->
+	</main>
+	<footer class="footer">
+		<div class="container">
+			<div class="footer__box">
+				<div class="footer__left">
+					<ul class="footer__list">
+						<li class="footer__item">
+							<a class="footer__item-link" href="#about">Biz haqimizda</a>
+						</li>
+						<li class="footer__item">
+							<a class="footer__item-link" href="#catalog">Katalog</a>
+						</li>
+						<li class="footer__item">
+							<a class="footer__item-link" href="#discountt">Aksiya</a>
+						</li>
+						<li class="footer__item">
+							<a class="footer__item-link" href="#addres">Manzilimiz</a>
+						</li>
+					</ul>
+				</div>
+				<ul class="footer__social-list social">
+					<li class="social__item">
+						<a class="social__link" href="https://www.facebook.com/" target="_blank">
+						</a>
+					</li>
+					<li class="social__item">
+						<a class="social__link" href="https://www.twitter.com/" target="_blank">
+						</a>
+					</li>
+					<li class="social__item">
+						<a class="social__link" href="https://www.vimeo.com/" target="_blank">
+						</a>
+					</li>
+					<li class="social__item">
+						<a class="social__link" href="https://www.youtube.com/" target="_blank">
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="footer__bottom">
+				<p class="footer__reserved">© 2023 Dream Cloud. Barcha huquqlar himoyalangan.</p>
+				<div class="footer__promotion">
+					<a href="#">
+						<img src="./images/vizitka.svg" alt="Abutech software development">
+					</a>
+				</div>
+				<a href="#top" class="footer__to-top"></a>
+			</div>
+		</div>
+	</footer>
+
+
+
+	<!-- TEMPLATESS START-->
+
+	<!-- Categories List -->
+	<template id="categories">
+		<li class="products_links-item">
+			<a class="products_links-link" href="#">C+</a>
+		</li>
+	</template>
+
+	<!-- Products -->
+	<template id=products>
+		<div class="products__zoom-selected-box hide" id="mainCarousel" data-fancybox="gallery">
+			<button class="products__zoom-close"></button>
+			<div>
+				<img class="products__zoom-selected" src="./images/matras.png" width="288" height="133" alt="" />
+			</div>
+			<ul class="products__zoom-list" id="thumbCarousel">
+				<li class="products__zoom-item mod" class="carousel__slide">
+					<img class="products__zoom-img img-1" src="./images/matras.png" alt="a" />
+				</li>
+				<li class="products__zoom-item" class="carousel__slide">
+					<img class="products__zoom-img img-2" src="./images/matras-red.png" alt="a" />
+				</li>
+				<li class="products__zoom-item" class="carousel__slide">
+					<img class="products__zoom-img img-3" src="./images/hero-carusel.jpg" alt="a" />
+				</li>
+
+			</ul>
+		</div>
+
+		<ul class="products_list">
+			<li class="products_item">
+				<div class="products_left">
+					<span class="new">YANGI MAHSULOT</span>
+					<img class="products__imgg" src="./images/matras.png" alt="a" />
+				</div>
+				<button class="products__zoom-btn">
+
+				</button>
+				<div class="products_right">
+					<h3 class="products_right-title">O</h3>
+					<ul class="products_info-list">
+						<li class="products_info-item">
+							<p class="products_info-title">Yuklama</p>
+							<strong class="products_info-info-value weight">150
+							</strong>
+							<strong class="products_info-info">kg</strong>
+						</li>
+						<li class="products_info-item">
+							<p class="products_info-title">Kafolati</p>
+							<strong class="products_info-info-value warranty">150
+							</strong>
+							<strong class="products_info-info">yil</strong>
+						</li>
+						<li class="products_info-item">
+							<p class="products_info-title">O’lchami</p>
+							<strong class="products_info-info-value size">150
+								<strong class="products_info-info"></strong>
+							</strong>
+						</li>
+						<li class="products_info-item">
+							<p class="products_info-title">Sig'imi</p>
+							<strong class="products_info-info-value capacity">150
+							</strong>
+							<strong class="products_info-info">kishilik</strong>
+						</li>
+					</ul>
+					<p class="products_right-desc">Desc</p>
+					<p class="products_right-price-title">Narxi</p>
+					<span class="products_right-price-value">
+						1 699 999
+					</span>
+					<strong class="products_right-price-text">so'm</strong>
+					<button class="products_right-order" style="display: block; margin-top: 2rem;">Buyurtma
+						berish</button>
+				</div>
+			</li>
+		</ul>
+
+
+	</template>
+	<!-- Discount products -->
+	<template id="discounts">
+		<div class="products__zoom-selected-box hide">
+			<button class="products__zoom-close"></button>
+			<img class="products__zoom-selected" src="./images/matras.png" width="288" height="133" alt="" />
+			<ul class="products__zoom-list">
+				<li class="products__zoom-item mod">
+					<img class="products__zoom-img" data-fancybox="gallery" src="./images/matras.png" width="44" height="44" alt="a" />
+				</li>
+				<li class="products__zoom-item" >
+					<img class="products__zoom-img" data-fancybox="gallery"  src="./images/matras-red.png" width="44" height="44" alt="a" />
+				</li>
+				<li class="products__zoom-item" >
+					<img class="products__zoom-img" data-fancybox="gallery" src="./images/hero-carusel.jpg" width="44" height="44" alt="a" />
+				</li>
+			</ul>
+		</div>
+
+		<ul class="products_list">
+			<li class="products_item">
+				<div class="products_left">
+					<span class="new products_new-btn">YANGI MAHSULOT</span>
+					<span class="discount-text">AKSIYA</span>
+					<img class="products__imgg" src="./images/matras.png" width="288" height="133" alt="a" />
+				</div>
+				<button class="products__zoom-btn">
+					<img src="./icons/zoom_in.svg" alt="Zoom in" />
+				</button>
+				<div class="products_right">
+					<h3 class="products_right-title">O</h3>
+					<ul class="products_info-list">
+						<li class="products_info-item">
+							<p class="products_info-title">Yuklama</p>
+							<strong class="products_info-info-value weight">150
+							</strong>
+							<strong class="products_info-info">kg</strong>
+						</li>
+						<li class="products_info-item">
+							<p class="products_info-title">Kafolati</p>
+							<strong class="products_info-info-value warranty">150
+							</strong>
+							<strong class="products_info-info">yil</strong>
+						</li>
+						<li class="products_info-item">
+							<p class="products_info-title">O’lchami</p>
+							<strong class="products_info-info-value size">150
+								<strong class="products_info-info"></strong>
+							</strong>
+						</li>
+						<li class="products_info-item">
+							<p class="products_info-title">Sig'imi</p>
+							<strong class="products_info-info-value capacity">150
+							</strong>
+							<strong class="products_info-info">kishilik</strong>
+						</li>
+					</ul>
+					<p class="products_right-desc">Desc</p>
+					<p class="products_right-price-title">Narxi</p>
+					<div class="products_right-discount-box" style="display: flex;">
+						<div class="price_box">
+							<del class="old_price">
+
+							</del>
+							<strong>so'm</strong>
+						</div>
+						<div class="price_box">
+							<p class="new_price products_right-price-value"></p>
+							<strong class="products_right-price-tex">so'm</strong>
+						</div>
+					</div>
+
+					<button class="products_right-order">Buyurtma berish</button>
+				</div>
+			</li>
+		</ul>
+	</template>
+	<!-- Address -->
+	<template id="address">
+		<div class="swiper-slide">
+			<div class="address__swiper-left">
+				<h2 class="address__title">Manzilimiz</h2>
+				<div class="address__box">
+					<h3 class="address__location">
+						Toshkent, Parkent ko'chasi, 176-uy
+					</h3>
+					<p class="address__destination">
+						Mo’ljal: Qoraqamish 2/1, Tursunxodjayeva ro’parasi, Milliy
+						bog’ metro bekati.
+					</p>
+					<a class="address__geolocation" href="">Geolokatsiya</a>
+				</div>
+			</div>
+			<div class="address__swiper-right">
+				<div class="swiper addressSwiperInner">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+
+						</div>
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+
+						</div>
+					</div>
+					<div class="address__pagination"></div>
+				</div>
+			</div>
+		</div>
+		<div class="swiper-slide">
+			<div class="address__swiper-left">
+				<h2 class="address__title">Manzilimiz2</h2>
+				<div class="address__box">
+					<h3 class="address__location">
+						Toshkent, Parkent ko'chasi, 176-uy
+					</h3>
+					<p class="address__destination">
+						Mo’ljal: Qoraqamish 2/1, Tursunxodjayeva ro’parasi, Milliy
+						bog’ metro bekati.
+					</p>
+					<a class="address__geolocation" href="">Geolokatsiya</a>
+				</div>
+			</div>
+			<div class="address__swiper-right">
+				<div class="swiper addressSwiperInner">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+
+						</div>
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+
+						</div>
+					</div>
+					<div class="address__pagination"></div>
+				</div>
+			</div>
+		</div>
+		<div class="swiper-slide">
+			<div class="address__swiper-left">
+				<h2 class="address__title">Manzilimiz3</h2>
+				<div class="address__box">
+					<h3 class="address__location">
+						Toshkent, Parkent ko'chasi, 176-uy
+					</h3>
+					<p class="address__destination">
+						Mo’ljal: Qoraqamish 2/1, Tursunxodjayeva ro’parasi, Milliy
+						bog’ metro bekati.
+					</p>
+					<a class="address__geolocation" href="">Geolokatsiya</a>
+				</div>
+			</div>
+			<div class="address__swiper-right">
+				<div class="swiper addressSwiperInner">
+					<div class="swiper-wrapper">
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+						</div>
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+
+						</div>
+						<div class="swiper-slide">
+							<img src="https://thispersondoesnotexist.com/image" alt="" />
+
+						</div>
+					</div>
+					<div class="address__pagination"></div>
+				</div>
+			</div>
+		</div>
+	</template>
+
+
+
+
+	<!-- TEMPLATESS END-->
+	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+	<script src="./js/countUp.min.js"></script>
+	<script src="https://unpkg.com/axios@1.2.1/dist/axios.min.js"></script>
+	<script src="./js/constants.js"></script>
+	<script type="module" src="./js/techSwiper.js"></script>
+	<script type="module" src="./js/main.js"></script>
+	<script src="./js/productZoom.js"></script>
+	<script>
+		// Customization example
+		// Fancybox.bind('[data-fancybox="gallery"]', {
+		//   infinite: false
+		// });
+	  </script>
+</body>
+
+</html>

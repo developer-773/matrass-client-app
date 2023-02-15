@@ -1,0 +1,139 @@
+@include size(phone) {
+	.hero {
+		position: relative;
+		background: #eabf9f;
+	}
+
+	.mySwiper {
+		width: 100%;
+		height: 100%;
+	}
+
+	.mySwiper .hero__pagination {
+		top: 500px;
+		width: 200px;
+	}
+
+	.mySwiper .hero__pagination {
+		background: #fff;
+		border-radius: 10px;
+		& .swiper-pagination-progressbar-fill {
+			background: #01384d;
+			border-radius: 10px;
+		}
+	}
+
+	.swip {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: 186px;
+		width: 100%;
+	}
+
+	.swip_title {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 800;
+		font-size: 41px;
+		line-height: 55px;
+		color: #01384d;
+	}
+
+	.category__btn {
+		position: absolute;
+		bottom: 90px;
+		padding: 13px 28px;
+		font-family: "Raleway";
+		font-weight: 500;
+		font-size: 16px;
+		line-height: 19px;
+		color: #01384d;
+		background: #ffffff;
+		border: 2px solid #01384d;
+		border-radius: 5px;
+		transition: .4s;
+		&::after {
+			display: inline-flex;
+			align-items: center;
+			content: "";
+			background-image: url("../../icons/arrow.svg");
+			background-repeat: no-repeat;
+			width: 15px;
+			height: 18px;
+			margin-left: 15px;
+		}
+	}
+
+	.category__btn:hover {
+		background-color: #01374dd0;
+		color: #fff;
+	}
+
+	.swip_right img {
+		width: 359px;
+		height: 194px;
+	}
+}
+
+@include size(tablet) {
+	.swip {
+		display: flex;
+		flex-direction: column;
+		padding-top: 68px;
+		padding-bottom: 107px;
+		width: 100%;
+	}
+
+	.swip_title {
+		font-family: "Raleway";
+		font-style: normal;
+		font-weight: 800;
+		font-size: 69px;
+		line-height: 63px;
+		color: #01384d;
+	}
+
+	.category__btn {
+		right: 0;
+		bottom: 107px;
+	}
+
+	.swip_right img {
+		width: 525px;
+		height: 320px;
+	}
+
+	.mySwiper .hero__pagination {
+		display: inline-block;
+		top: 620px;
+		left: 0;
+		right: 0;
+		margin-left: auto;
+		width: 200px;
+	}
+}
+
+@include size(desktop) {
+	.swip {
+		flex-direction: row;
+	}
+
+	.category__btn {
+		bottom: 190px;
+	}
+
+	.swip_right {
+		padding-top: 165px;
+	}
+
+	.category__btn {
+		right: auto;
+		bottom: 151px;
+	}
+
+	.mySwiper .hero__pagination{
+			top: 550px;
+			left: 0;
+			margin-left: 0;
+		}
+}
