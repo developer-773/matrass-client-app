@@ -34,6 +34,8 @@ const addressWrapper = document.querySelector(".addressWrapper")
 const heroCarouselWrapper = document.querySelector(".heroCarouselWrapper")
 const elLoaderTxt = document.querySelectorAll(".loader-text") 
 const elSecondAppBox = document.querySelector(".aapp")
+const cancelSecondApp = elSecondAppBox.querySelector(".btn-cancel")
+const trySecondApp = elSecondAppBox.querySelector(".btn-done")
 let count = 1;
 
 
@@ -142,12 +144,9 @@ setTimeout(() => {
 	elOverlay.classList.remove("hide")
 
 	elSecondAppBox.addEventListener("click", (evt) => {
-		evt.preventDefault()
-		if(evt.target.classList.contains("btn-cancel")) {
+		if(evt.target.textContent === cancelSecondApp.innerHTML) {
 			elOverlay.classList.add("hide")
 			closeBox()
-		}else if(evt.target.classList.contains("btn-done")) {
-			window.location.pathname = "https://matrass-admin773.netlify.app/"
 		}
 	})
 },4300)
