@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 	<meta charset="UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<title>Matraslar</title>
+	<title>Dream Matrassess</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet" />
 	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;600;800&display=swap" rel="stylesheet" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 	<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
-	<link rel="stylesheet" href="./css/main.css" />
+	<link rel="stylesheet" href="./css/main.min.css" />
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js" defer></script>
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" />
-
+<style>
+	.loader-text {
+		margin: 0 auto;
+		font-family: "Josefin Sans";
+		font-size: 40px;
+		color: #01384d;
+	}
+</style>
 </head>
 
 <body>
@@ -114,13 +119,22 @@
 			<div class="container">
 				<div class="swiper mySwiper">
 					<div class="swiper-wrapper heroCarouselWrapper">
+						<h3 class="loader-text">Yuklanmoqda...</h3>
 						<!-- Carousel here from backend -->
 					</div>
 					<div class="hero__pagination"></div>
 				</div>
 			</div>
 		</section>
-
+		<section class="show-next-app aapp hide">
+			<div class="container">
+				<div class="aapp_wrap">
+					<h3 class="aap_title">Try our second Admin app of this project !</h3>
+					<button class="btn btn-cancel">Close</button>
+					<button class="btn btn-done">Try now</button>
+				</div>
+			</div>
+		</section>
 		</section>
 		<section class="stats">
 			<div class="container">
@@ -148,13 +162,13 @@
 			<div class="container">
 				<h2 class="products_title">Bizning mahsulotlar</h2>
 				<ul class="products_linsk-list" id="catalog">
-
 					<!-- Products categories list here from backend -->
+					<h3 class="loader-text">Yuklanmoqda...</h3>
 				</ul>
-				<div class="products__main-box">
+				<ul class="products__main-box">
 					<div class="overlay hide"></div>
 					<!-- Products list here from backend -->
-				</div>
+				</ul>
 		</section>
 		<section class="discount">
 			<div class="container">
@@ -172,7 +186,9 @@
 				<h2 class="tech_title">Ishlab chiqarish texnologiyalari</h2>
 				<div class="swiper techSwiper">
 					<!-- Swiper here from backend -->
-					<div class="swiper-wrapper techWrapper"></div>
+					<div class="swiper-wrapper techWrapper">
+						<h3 class="loader-text">Yuklanmoqda...</h3>
+					</div>
 					<div class="tech__pagination"></div>
 				</div>
 			</div>
@@ -281,6 +297,7 @@
 			<div class="container">
 				<div class="swiper addressSwiper">
 					<div class="swiper-wrapper addressWrapper">
+						<h3 class="loader-text">Yuklanmoqda...</h3>
 						<!-- Swiper here from backend -->
 					</div>
 				</div>
@@ -315,19 +332,6 @@
 				</div>
 			</div>
 		</section>
-		<!-- <section>
-			<div class="container">
-				<a data-fancybox="gallery" href="https://lipsum.app/id/46/1600x1200">
-					<img class="rounded" src="https://lipsum.app/id/46/200x150" />
-				  </a>
-				  <a data-fancybox="gallery" href="https://lipsum.app/id/47/1600x1200">
-					<img class="rounded" src="https://lipsum.app/id/47/200x150" />
-				  </a>
-				  <a data-fancybox="gallery" href="https://lipsum.app/id/51/1600x1200">
-					<img class="rounded" src="https://lipsum.app/id/51/200x150" />
-				  </a>
-			</div>
-		</section> -->
 	</main>
 	<footer class="footer">
 		<div class="container">
@@ -392,34 +396,34 @@
 
 	<!-- Products -->
 	<template id=products>
-		<div class="products__zoom-selected-box hide" id="mainCarousel" data-fancybox="gallery">
-			<button class="products__zoom-close"></button>
-			<div>
+		<li class="prod_item">
+
+			<div class="products__zoom-selected-box hide" >
+				<button class="products__zoom-close"></button>
+				<div>
 				<img class="products__zoom-selected" src="./images/matras.png" width="288" height="133" alt="" />
 			</div>
-			<ul class="products__zoom-list" id="thumbCarousel">
-				<li class="products__zoom-item mod" class="carousel__slide">
+			<ul class="products__zoom-list">
+				<li class="products__zoom-item mod" >
 					<img class="products__zoom-img img-1" src="./images/matras.png" alt="a" />
 				</li>
-				<li class="products__zoom-item" class="carousel__slide">
+				<li class="products__zoom-item">
 					<img class="products__zoom-img img-2" src="./images/matras-red.png" alt="a" />
 				</li>
-				<li class="products__zoom-item" class="carousel__slide">
+				<li class="products__zoom-item" >
 					<img class="products__zoom-img img-3" src="./images/hero-carusel.jpg" alt="a" />
 				</li>
 
 			</ul>
 		</div>
 
-		<ul class="products_list">
-			<li class="products_item">
+		<div class="products_list">
+			<div class="products_item">
 				<div class="products_left">
 					<span class="new">YANGI MAHSULOT</span>
 					<img class="products__imgg" src="./images/matras.png" alt="a" />
 				</div>
-				<button class="products__zoom-btn">
-
-				</button>
+				<button class="products__zoom-btn"></button>
 				<div class="products_right">
 					<h3 class="products_right-title">O</h3>
 					<ul class="products_info-list">
@@ -454,13 +458,14 @@
 						1 699 999
 					</span>
 					<strong class="products_right-price-text">so'm</strong>
+					<span class="products_category_type"></span>
 					<button class="products_right-order" style="display: block; margin-top: 2rem;">Buyurtma
 						berish</button>
+					</div>
 				</div>
-			</li>
-		</ul>
-
-
+			</div>
+		</li>
+			
 	</template>
 	<!-- Discount products -->
 	<template id="discounts">
@@ -645,20 +650,13 @@
 
 
 	<!-- TEMPLATESS END-->
-	<script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 	<script src="./js/countUp.min.js"></script>
 	<script src="https://unpkg.com/axios@1.2.1/dist/axios.min.js"></script>
-	<script src="./js/constants.js"></script>
-	<script type="module" src="./js/techSwiper.js"></script>
-	<script type="module" src="./js/main.js"></script>
+	<script  src="./js/modules.js"></script>
+	<script  src="./js/techSwiper.js"></script>
+	<script  src="./js/main.js"></script>
 	<script src="./js/productZoom.js"></script>
-	<script>
-		// Customization example
-		// Fancybox.bind('[data-fancybox="gallery"]', {
-		//   infinite: false
-		// });
-	  </script>
 </body>
 
 </html>

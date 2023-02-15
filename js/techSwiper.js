@@ -1,15 +1,19 @@
-import {baseURL} from "./constants"
+elLoaderTxt = document.querySelectorAll(".loader-text") 
 const fragment = document.createDocumentFragment();
 const elTechSwiperWrap = document.querySelector(".techWrapper");
 let slidesPerVieww=1,
 	spaceBetweenn=2,
 	centered=true
 
+
+	/* TECHNOLOGY SWIPER FUNCTION START */
+
 const renderTechSwiper = async () => {
 	try {
 		const res = await fetch(`${baseURL}/technology`);
 		const data = await res.json();
 		data?.forEach((item) => {
+			elTechSwiperWrap.innerHTML = ''
 			let box = document.createElement("div");
 			box.classList.add("swiper-slide");
 			box.innerHTML = `
@@ -58,6 +62,11 @@ const renderTechSwiper = async () => {
 
 renderTechSwiper();
 
+	/* TECHNOLOGY SWIPER FUNCTION END */
+
+
+
+	/* CONVERT ALL PLAYLIST IMAGES TO YOUTUBE START */
 
 function findVideos() {
     let videos = document.querySelectorAll(".video")
@@ -111,6 +120,9 @@ setTimeout(() => {
 }, 1500)
 
 
+	/* CONVERT ALL PLAYLIST IMAGES TO YOUTUBE END */
+
+
 
 const adaptiveTechSwipers = () => {
 	if ((window.matchMedia("(min-width: 768px)")).matches) {
@@ -129,9 +141,11 @@ let techSwiper = new Swiper(".techSwiper", {
 	},
 	autoplay: {
 			delay: 2500,
+			pauseOnMouseEnter: true,
+			disableOnInteraction: false,
 		},
 		centeredSlides: centered,
 		slidesPerView: slidesPerVieww,
 		spaceBetween: spaceBetweenn,
-		
+		loop: true,
 	});

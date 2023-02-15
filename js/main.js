@@ -1,32 +1,22 @@
-// const baseURL = "https://dream-matras.onrender.com/api";
-// const baseImgUrl = "https://dream-matras.onrender.com"
-import {baseURL, baseImgUrl} from "./constants"
 
 const elOverlay = document.querySelector(".overlay")
 const elHamburgeMenubtn = document.querySelector(".header__hamburger");
 const elHeader = document.querySelector("header");
 const elBody = document.querySelector("body");
-const elCategoryLinksSection = document.querySelector(".products");
-const elCategoryLinksList = document.querySelector(".products_linsk-list");
-const elCategoryLinksItem = document.querySelectorAll(".products_links-item");
-const elCategoryLinks = document.querySelectorAll(".products_links-link");
 const elHeaderBtn = elHeader.querySelector(".header__btn");
 const elHeaderTabletBtn = elHeader.querySelector(".header__btn--active");
 let isActive = "Barchasi"
 const elHeaderOrderModal = elHeader.querySelector(".header__order-modal");
-const elHeaderOrderSuccessModal = elHeader.querySelector(
-	".header__order-success"
-);
-const elHeaderOrderSuccessModalBtn = elHeader.querySelector(
-	".header__order-success-btn"
-);
+const elHeaderOrderSuccessModal = elHeader.querySelector(".header__order-success");
+const elHeaderOrderSuccessModalBtn = elHeader.querySelector(".header__order-success-btn");
 const elForm = elHeader.querySelector(".header__order-form");
 const elFormInputName = elForm.querySelector("#userName");
 const elFormInputTel = elForm.querySelector("#userNumber");
 const elFormSelect = elForm.querySelector("#userCategory");
 const elFormDecrementButton = elForm.querySelector(".header__order-count-decrement");
 let elFormProductCount = elForm.querySelector("#userProductCount");
-const elFormIncrementButton = elForm.querySelector(	".header__order-count-increment");
+const elFormIncrementButton = elForm.querySelector(".header__order-count-increment");
+const elCategoryLinksList = document.querySelector(".products_linsk-list");
 const elProducts = document.querySelector(".products__main-box");
 const elDiscountTitle = document.querySelector(".discount_title")
 const elDiscounts = document.querySelector(".discount_main-box")
@@ -42,11 +32,12 @@ const elAddressTemplate = document.querySelector("#address").content
 const discountFragment = document.createDocumentFragment()
 const addressWrapper = document.querySelector(".addressWrapper")
 const heroCarouselWrapper = document.querySelector(".heroCarouselWrapper")
+const elLoaderTxt = document.querySelectorAll(".loader-text") 
+const elSecondAppBox = document.querySelector(".aapp")
 let count = 1;
-let validate = false;
 
-let m = require("./constants")
-console.log(m)
+
+/* HEADER FUNCTIONS START */
 
 const orderModal = () => {
 	return elHeaderOrderModal.classList.toggle("hide");
@@ -100,13 +91,7 @@ elFormDecrementButton.addEventListener("click", () => {
 	decrement();
 });
 
-async function testServer() {
-	const res = await fetch("/products")
-	const data = await res.json()
-	console.log(data)
-}
 
-testServer()
 
 
 elForm.addEventListener("submit", (evt) => {
@@ -147,12 +132,45 @@ elHeaderOrderSuccessModalBtn.addEventListener("click", (evt) => {
 		(elFormProductCount.textContent = count);
 });
 
+/* HEADER FUNCTIONS END */
+
+
+/* SECOND APP SHOW BOX START */
+
+setTimeout(() => {
+	elSecondAppBox.classList.remove("hide")
+	elOverlay.classList.remove("hide")
+
+	elSecondAppBox.addEventListener("click", (evt) => {
+		evt.preventDefault()
+		if(evt.target.classList.contains("btn-cancel")) {
+			elOverlay.classList.add("hide")
+			closeBox()
+		}else if(evt.target.classList.contains("btn-done")) {
+			window.location.pathname = "https://matrass-admin773.netlify.app/"
+		}
+	})
+},4300)
+
+const closeBox = () => {
+	return elSecondAppBox.classList.add("hide")
+}
+
+/* SECOND APP SHOW BOX END */
+
+
+
+
+/* HERO FUNCTIONS START */
+
+
 async function getHeroCarousels() {
 	axios
 		.get(`${baseURL}/carousel`)
 		.then((res) => {
 			if (res.status >= 200 && res.status < 210) {
 				res.data.forEach((item, i) => {
+					heroCarouselWrapper.innerHTML = ''
 					let box = document.createElement("div")
 					box.classList.add("swiper-slide")
 					box.innerHTML = `
@@ -197,7 +215,7 @@ async function getHeroCarousels() {
 		})
 		.catch((error) => {
 			Toastify({
-				text: error.response.data.message,
+				text: error?.message,
 				duration: 5000,
 				close: true,
 				position: 'right', // `left`, `center` or `right`
@@ -209,6 +227,9 @@ async function getHeroCarousels() {
 }
 
 getHeroCarousels()
+
+
+/* HERO FUNCTIONS END */
 
 
 
@@ -262,13 +283,16 @@ dayCount.start();
 
 /* Counters end */
 
-/* Products active link function start */
+
+
+/* RENDER PRODUCTS CATEGORIES FUNCTION START */
 
 async function getCategories() {
 	try {
 		const res = await fetch(`${baseURL}/products`);
 		const data = await res.json();
 		data?.categories?.forEach((category) => {
+			elCategoryLinksList.innerHTML  =''
 			const cloned = elTemplate.cloneNode(true)
 			cloned.querySelector(".products_links-link").textContent = category.category
 			let active = cloned.querySelector(".products_links-link")
@@ -286,16 +310,20 @@ async function getCategories() {
 
 getCategories();
 
+/* RENDER PRODUCTS CATEGORIES FUNCTION END */
 
-async function getProductsSelect() {
+/* RENDER PRODUCTS FUNCTION START */
+
+async function getProducts() {
 	try {
 		const res = await fetch(`${baseURL}/products`);
 		if (res.status >= 200 && res.status < 210) {
 			const data = await res.json();
 			let products = data.products
-			
+			console.log(products)
 			products?.forEach((product, i) => {
-
+				elProducts.innerHTML = '';
+				elDiscounts.innerHTML = ''
 				let option = document.createElement("option")
 				option.textContent = product.name
 				option.value = product.name
@@ -306,7 +334,7 @@ async function getProductsSelect() {
 				cloned.querySelector(".products__zoom-btn").addEventListener("click", (evt) => {
 					getSingleProduct(evt.target.dataset.productIndex, products)
 				})
-				
+				cloned.querySelector(".products_category_type").textContent = product.category
 				cloned.querySelector(".products__imgg").src = `${baseImgUrl}/products/${images[0]}`;
 				cloned.querySelector(".products_right-title").textContent = product?.name
 				cloned.querySelector(".weight").textContent = product.weight
@@ -318,25 +346,25 @@ async function getProductsSelect() {
 				cloned.querySelector(".products_right-desc").textContent = product.body;
 				cloned.querySelector(".products_right-price-value").textContent = product.cost;
 
-				fragment.appendChild(cloned)		
+				fragment.appendChild(cloned)
 			})
-		
+
 			let discountData = data?.products.filter(item => item.new_cost !== null)
 			discountData.forEach((item, i) => {
 				elDiscountTitle.classList.remove("hide")
 				const clonedDiscount = elDiscountProductsTemplate.cloneNode(!0)
 				clonedDiscount.querySelector(".products__imgg").src = `${baseImgUrl}/products/${item?.product_images.replaceAll("[", "").replaceAll("]", "").replaceAll('"', "").split(",")[0]}`;
-					clonedDiscount.querySelector(".products__zoom-img").src = `${baseImgUrl}/products/${item?.product_images.replaceAll("[", "").replaceAll("]", "").replaceAll('"', "").split(",")[0]}`
-							
-					clonedDiscount.querySelector(".products_right-title").textContent = item?.name
-					clonedDiscount.querySelector(".products_right-desc").textContent = item.body
-					clonedDiscount.querySelector(".weight").textContent = item.weight
-					clonedDiscount.querySelector(".warranty").textContent = item.warranty
-					clonedDiscount.querySelector(".size").textContent = item.size;
-					clonedDiscount.querySelector(".capacity").textContent = item.capacity;
-					clonedDiscount.querySelector(".old_price").textContent = item.cost
-					clonedDiscount.querySelector(".new_price").textContent = item.new_cost
-					discountFragment.appendChild(clonedDiscount)
+				clonedDiscount.querySelector(".products__zoom-img").src = `${baseImgUrl}/products/${item?.product_images.replaceAll("[", "").replaceAll("]", "").replaceAll('"', "").split(",")[0]}`
+
+				clonedDiscount.querySelector(".products_right-title").textContent = item?.name
+				clonedDiscount.querySelector(".products_right-desc").textContent = item.body
+				clonedDiscount.querySelector(".weight").textContent = item.weight
+				clonedDiscount.querySelector(".warranty").textContent = item.warranty
+				clonedDiscount.querySelector(".size").textContent = item.size;
+				clonedDiscount.querySelector(".capacity").textContent = item.capacity;
+				clonedDiscount.querySelector(".old_price").textContent = item.cost
+				clonedDiscount.querySelector(".new_price").textContent = item.new_cost
+				discountFragment.appendChild(clonedDiscount)
 			})
 			elProducts.appendChild(fragment)
 			elDiscounts.appendChild(discountFragment)
@@ -347,30 +375,32 @@ async function getProductsSelect() {
 	}
 }
 
-getProductsSelect();
+getProducts();
+
+
+/* RENDER PRODUCTS FUNCTION START */
 
 
 
 
 
-
-/* Product zoom modal function start */
+/* PRODUCTS ALL EVENTS FUNCTIONS START */
 
 async function readyAllEvents() {
 
 	const elProductsZoombtn = document.querySelectorAll(".products__zoom-btn");
-	const elProductZoomBtn = document.querySelector(".products__zoom-btn")
 	const elProductsZoomSelected = document.querySelector(".products__zoom-selected-box");
 	const elProductsZoomSelectedImg = document.querySelector(".products__zoom-selected");
 	const elProductsZoomItem = document.querySelectorAll(".products__zoom-item");
 	const elProductsZommImg = document.querySelectorAll(".products__zoom-img");
 	const elProductsZommCloseBtn = document.querySelector(".products__zoom-close");
 	const elProductsRightOrderBtn = document.querySelectorAll(".products_right-order");
-	const elHeaderFormCloseBtn = document.querySelector(".form-close");
 	const elOverlay = document.querySelector(".overlay");
-	
+	const elProductsItem = document.getElementsByClassName("prod_item")
 
+	const elCategoryLinks = document.querySelectorAll(".products_links-link");
 
+	//Product zoom btn event
 	elProductsZoombtn.forEach(item => {
 		item.addEventListener("click", (evt) => {
 			elProductsZoomSelected.classList.remove("hide");
@@ -384,7 +414,7 @@ async function readyAllEvents() {
 		elOverlay.classList.add("hide");
 	});
 
-
+	//Render selected product images
 	elProductsZommImg.forEach((img) => {
 		img.addEventListener("click", (evt) => {
 			elProductsZoomSelectedImg.src = evt.target.src;
@@ -395,6 +425,7 @@ async function readyAllEvents() {
 		});
 	});
 
+	//Product order
 	elProductsRightOrderBtn.forEach(item => {
 		item.addEventListener("click", () => {
 			elOverlay.classList.toggle("hide");
@@ -402,56 +433,60 @@ async function readyAllEvents() {
 		});
 	})
 
-		
-const test = () => {
-	elCategoryLinks.forEach((link) => {
-		if (link.innerHTML == isActive) {
-			link.classList.add("products_links-link--active");
-		} else {
-			link.classList.remove("products_links-link--active");
+
+	const test = () => {
+		elCategoryLinks.forEach((link) => {
+			if (link.innerHTML == isActive) {
+				link.classList.add("products_links-link--active");
+			} else {
+				link.classList.remove("products_links-link--active");
+			}
+		});
+	};
+
+
+	//Add active link selected link
+	elCategoryLinksList.addEventListener("click", (evt) => {
+		evt.preventDefault();
+		const targeted = evt.target;
+		if (targeted.matches(".products_links-link")) {
+			if(targeted.textContent !== "Barchasi") {
+				isActive = targeted.innerHTML;
+				test()
+				sortingContent("products_category_type", evt)
+			}
+			else {
+				AllContent()
+			}
 		}
-	});
-};
 
-elCategoryLinksList.addEventListener("click", (evt) => {
-	evt.preventDefault();
-	const targeted = evt.target;
-	console.log(targeted)
-	if (targeted.matches(".products_links-link")) {
-		isActive = targeted.innerHTML;
+	})
+
+	function AllContent() {
+		for (let i = 0; i < elProductsItem.length; i++) {  
+			elProductsItem[i].style.display = "block";
+		}
 	}
-	else  {
-		console.log("Something went wrong")
+
+	//Sort products by categories
+	function sortingContent(element, evennt) {
+		for (let i = 0; i < elProductsItem.length; i++) {  
+			const titles = elProductsItem[i].getElementsByClassName(element)[0].innerHTML
+			let res = titles.match(evennt.target.textContent);	
+			if (res) {
+				elProductsItem[i].style.display = "block";
+			}
+
+			else {
+				elProductsItem[i].style.display = "none";		
+			}
+		}
 	}
-})
-
-test()
-
-
-// const test = () => {
-// 	elCategoryLinks.forEach((link) => {
-// 		if (link.innerHTML == isActive) {
-// 			link.classList.add("products_links-link--active");
-// 		} else {
-// 			link.classList.remove("products_links-link--active");
-// 		}
-// 	});
-// };
-
-// elCategoryLinksList.addEventListener("click", (evt) => {
-// 	evt.preventDefault();
-// 	const targeted = evt.target;
-// 	console.log(targeted)
-// 	if (targeted.matches(".products_links-link")) {
-// 		isActive = targeted.innerHTML;
-// 	}else {
-// 		console.log("Noo")
-// 	}
-// })
-// });
 
 }
-	/* Product zoom modal function end */
+
+/* PRODUCTS ALL EVENTS FUNCTIONS END */
+
 
 
 
@@ -462,7 +497,7 @@ const getSingleProduct = (id, data) => {
 	const findedData = data.find(item => item.id === Number(id))
 	let images = findedData.product_images.replaceAll("[", '').replaceAll("]", '').replaceAll('"', "").split(",")
 	img.src = `${baseImgUrl}/products/${images[0]}`
-	img.src = `${baseImgUrl}/products/${images[0]}`
+	// img.src = `${baseImgUrl}/products/${images[0]}`
 
 	images.forEach((img, i) => {
 		imgs[i].src = `${baseImgUrl}/products/${img}`
@@ -476,15 +511,15 @@ const getSingleProduct = (id, data) => {
 
 
 
-/* Address swiper start */
+/* ADDRESS SWIPER FUNCTION START */
 
 const addressSwiper = new Swiper(".addressSwiper", {
 	pagination: {
 		clickable: true,
 	},
+	speed: 2500,
 	autoplay: {
-		delay: 8000,
-		// disableOnInteraction: false,
+		delay: 7500,
 	},
 
 });
@@ -498,6 +533,7 @@ const renderAddressSwiper = async () => {
 		const res = await fetch(`${baseURL}/address`);
 		const data = await res.json();
 		data?.forEach((item, i) => {
+			addressWrapper.innerHTML = ''
 			let box = document.createElement("div");
 			box.classList.add("swiper-slide");
 			box.innerHTML = `
@@ -546,21 +582,22 @@ const renderAddressSwiper = async () => {
 			fragment.appendChild(box)
 		});
 		addressWrapper.appendChild(fragment);
-		
-const addressSwiperInner = new Swiper(".addressSwiperInner", {
-	pagination: {
-		el: ".address__pagination",
-		clickable: true,
-		type: "progressbar",
-	},
-	autoplay: {
-		delay: 2500,
-	},
-	observer: true,
-	observeParents: true,
-	watchSlidesProgress: true,
-});
-	} catch (error){
+
+		const addressSwiperInner = new Swiper(".addressSwiperInner", {
+			pagination: {
+				el: ".address__pagination",
+				clickable: true,
+				type: "progressbar",
+			},
+			speed: 500,
+			autoplay: {
+				delay: 2000,
+			},
+			observer: true,
+			observeParents: true,
+			watchSlidesProgress: true,
+		});
+	} catch (error) {
 		console.log(error)
 	}
 }
@@ -570,8 +607,8 @@ renderAddressSwiper();
 /* Address inner swiper end */
 
 const showSuccessApellation = () => {
-	elInterestingWrap.classList.toggle("hide");
 
+	elInterestingWrap.classList.toggle("hide");
 	elInterestingSuccess.classList.toggle("hide");
 	setTimeout(() => {
 		elInterestingSuccess.classList.toggle("hide");
@@ -606,49 +643,11 @@ elInterestingForm.addEventListener("submit", (evt) => {
 			}).showToast();
 		});
 
-	
+
 });
 
 
-
-
-
-// const test = () => {
-// 	elCategoryLinks.forEach((link) => {
-// 		if (link.innerHTML == isActive) {
-// 			link.classList.add("products_links-link--active");
-// 		} else {
-// 			link.classList.remove("products_links-link--active");
-// 		}
-// 	});
-// };
-
-// elCategoryLinksList.addEventListener("click", (evt) => {
-// 	evt.preventDefault();
-// 	const targeted = evt.target;
-// 	console.log(targeted)
-// 	if (targeted.matches(".products_links-link")) {
-// 		isActive = targeted.innerHTML;
-// 	}else {
-// 		console.log("Noo")
-// 	}
-// })
-// // });
-
-/* Products active link function end */
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* ADDRESS SWIPER FUNCTION END */
 
 
 
