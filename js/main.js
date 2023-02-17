@@ -139,18 +139,21 @@ elHeaderOrderSuccessModalBtn.addEventListener("click", (evt) => {
 
 /* SECOND APP SHOW BOX START */
 
-setTimeout(() => {
+const showSecondApp = () => {
+
+	setTimeout(() => {
 	elSecondAppBox.classList.remove("hide")
 	elOverlay.classList.remove("hide")
-
+	
 	elSecondAppBox.addEventListener("click", (evt) => {
 		if(evt.target.textContent === cancelSecondApp.innerHTML) {
 			elOverlay.classList.add("hide")
 			closeBox()
 		}
 	})
-},4300)
+},7000)
 
+}
 const closeBox = () => {
 	return elSecondAppBox.classList.add("hide")
 }
@@ -168,6 +171,7 @@ async function getHeroCarousels() {
 		.get(`${baseURL}/carousel`)
 		.then((res) => {
 			if (res.status >= 200 && res.status < 210) {
+				showSecondApp()
 				res.data.forEach((item, i) => {
 					heroCarouselWrapper.innerHTML = ''
 					let box = document.createElement("div")
@@ -516,7 +520,6 @@ const addressSwiper = new Swiper(".addressSwiper", {
 	pagination: {
 		clickable: true,
 	},
-	speed: 2500,
 	autoplay: {
 		delay: 7500,
 	},
@@ -588,7 +591,6 @@ const renderAddressSwiper = async () => {
 				clickable: true,
 				type: "progressbar",
 			},
-			speed: 500,
 			autoplay: {
 				delay: 2000,
 			},
