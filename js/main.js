@@ -38,6 +38,7 @@ const cancelSecondApp = elSecondAppBox.querySelector(".btn-cancel")
 const trySecondApp = elSecondAppBox.querySelector(".btn-done")
 let count = 1;
 
+const reservedImages = ["http://sc04.alicdn.com/kf/Hd2f7888d22804ac0a50c0551d535fb2ek.jpg", "https://static-uc.olist.ng/upload/20191106/bzaen6qxiwx.jpg", "https://www.shutterstock.com/image-photo/comfortable-bed-new-mattress-room-260nw-1333930100.jpg", "https://m.media-amazon.com/images/S/aplus-media-library-service-media/cc88c37a-8c08-488f-a412-c7631ff6bec9.__CR0,343,1000,619_PT0_SX970_V1___.jpg"]
 
 /* HEADER FUNCTIONS START */
 
@@ -338,7 +339,7 @@ async function getProducts() {
 					getSingleProduct(evt.target.dataset.productIndex, products)
 				})
 				cloned.querySelector(".products_category_type").textContent = product.category
-				cloned.querySelector(".products__imgg").src = `${baseImgUrl}/products/${images[0]}`;
+				cloned.querySelector(".products__imgg").src = `${baseImgUrl}/products/${images[0]} ` || reservedImages[i]
 				cloned.querySelector(".products_right-title").textContent = product?.name
 				cloned.querySelector(".weight").textContent = product.weight
 				cloned.querySelector(".warranty").textContent = product.warranty
